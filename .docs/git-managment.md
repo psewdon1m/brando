@@ -1,6 +1,8 @@
+# !НЕ РЕДАКТИРОВАТЬ!
+
 # Git Management — Управление версиями проекта
 
-Документирует git workflow, версионирование и правила работы с репозиторием Venus.
+Документирует git workflow, версионирование и правила работы с репозиторием.
 
 ---
 
@@ -17,20 +19,16 @@
 
 ## Репозиторий и ветки
 
-**URL:** https://github.com/psewdon1m/venus.git
+**URL:** https://github.com/psewdon1m/brando.git
 
 ### Основные ветки
 
 | Ветка | Назначение | Защита | CI/CD |
 |-------|------------|--------|-------|
+| **mvp** | mvp версия проекта | Нет | Нет |
 | **dev** (default) | Основная разработка | Нет | Lint, test, build |
 | **stage** | Предпродакшн тестирование | PR review | +Интеграционные тесты, stage deploy |
 | **prod** | Продакшн | Multiple approvals | +Security scans, production deploy |
-
-### Временные ветки
-- `feature/*` — новые фичи (от dev)
-- `bugfix/*` — исправления багов (от dev/stage)
-- `hotfix/*` — срочные фиксы (от prod)
 
 **Особенности:** Тэги доступны во всех ветках, но деплой происходит только из соответствующих веток.
 
@@ -51,9 +49,8 @@
 Используем [SemVer 2.0.0](https://semver.org/):
 - **MAJOR:** Breaking changes
 - **MINOR:** Новая функциональность (backward-compatible)
-- **PATCH:** Bug fixes (backward-compatible)
 
-**Формат:** `vMAJOR.MINOR.PATCH` (пример: `v1.2.3`)
+**Формат:** `vMAJOR.MINOR.PATCH` (пример: `v1.23`)
 
 ### Определение версии
 
@@ -62,9 +59,7 @@
 git describe --tags --abbrev=0
 
 # Следующая версия:
-# v1.2.5 → v1.2.6 (patch)
-# v1.2.5 → v1.3.0 (minor)
-# v1.2.5 → v2.0.0 (major)
+# v1.25 → v1.26 
 ```
 
 ### Обновление версии
@@ -75,7 +70,7 @@ git describe --tags --abbrev=0
 1. Реализовать фичи в dev
 2. Push в dev (CI/CD тестирование)
 3. Создать tag при достижении milestones
-4. Обновить `docs/versions.md`
+4. Обновить `.docs/CHANGELOG.md`
 
 **Stage ветка:**
 1. Merge стабильной версии из dev в stage
@@ -89,39 +84,22 @@ git describe --tags --abbrev=0
 3. Создать production tag (v1.2.3)
 4. Manual deploy на production
 
-### Формат обновления versions.md
+### Формат обновления CHANGELOG.md
 
 ```
-v{MAJOR}.{MINOR}.{PATCH} ({branch}) ({YYYY-MM-DD} {HH:MM}): {краткое описание}
+v{MAJOR}.{MINOR}. ({branch}) ({YYYY-MM-DD} {HH:MM}): {краткое описание}
 ```
 
 **Правила:**
 - Новые версии добавляются сверху
-- Обязательно указывать ветку: `(dev)`, `(stage)`, `(prod)`
+- Обязательно указывать ветку: `(mvp)`, `(dev)`, `(stage)`, `(prod)`
 - Формат даты: YYYY-MM-DD HH:MM
 
 **Примеры:**
 ```
-v1.3.0 (dev) (2025-11-25 16:30): persona management system
-v1.2.6 (prod) (2025-11-23 10:00): production deployment
+v1.30 (dev) (2025-11-25 16:30): persona management system
+v1.26 (prod) (2025-11-23 10:00): production deployment
 ```
-
----
-
-
-## Branching Strategy
-
-### Feature Branches
-- **Naming:** `feature/KT{N}-{description}` (пример: `feature/KT1-auth-system`)
-- **Workflow:** Create от dev → develop → PR to dev → merge
-
-### Bugfix Branches
-- **Naming:** `bugfix/{issue-number}-{description}` (пример: `bugfix/42-fix-upload`)
-- **Workflow:** Create от dev/stage → fix → PR to dev
-
-### Hotfix Branches
-- **Naming:** `hotfix/v{version}-{description}` (пример: `hotfix/v1.2.6-critical-bug`)
-- **Workflow:** Create от prod → fix → merge to prod → cherry-pick to dev
 
 ---
 
@@ -139,7 +117,6 @@ v1.2.6 (prod) (2025-11-23 10:00): production deployment
 
 **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`
 
-**Scopes:** `auth`, `projects`, `personas`, `media`, `cv`, `frontend`, `api`, `db`
 
 **Примеры:**
 ```
@@ -160,20 +137,20 @@ docs(api): update API usage examples
 - [ ] Feature полностью реализована и протестирована
 - [ ] Локальные тесты проходят
 - [ ] Код соответствует code style
-- [ ] [`docs/versions.md`](versions.md) updated с `(dev)`
+- [ ] [`.docs/CHANGELOG.md`](CHANGELOG.md) updated с `(dev)`
 
 **Для stage релиза:**
 - [ ] Стабильная версия из dev
 - [ ] Интеграционные тесты пройдены
 - [ ] QA approval получен
-- [ ] [`docs/versions.md`](versions.md) updated с `(stage)`
+- [ ] [`.docs/CHANGELOG.md`](CHANGELOG.md) updated с `(stage)`
 - [ ] Stage environment готов
 
 **Для prod релиза:**
 - [ ] Stage testing завершено успешно
 - [ ] Все acceptance criteria выполнены
 - [ ] Performance и security checks пройдены
-- [ ] [`docs/versions.md`](versions.md) updated с `(prod)`
+- [ ] [`.docs/CHANGELOG.md`](CHANGELOG.md) updated с `(prod)`
 - [ ] Rollback plan подготовлен
 
 ---
@@ -187,16 +164,16 @@ git checkout dev
 git pull origin dev
 
 # Обновить versions.md
-echo "v1.2.6 (dev) (2025-11-20 15:30): feature description" >> docs/versions.md
+echo "v1.26 (dev) (2025-11-20 15:30): feature description" >> .docs/CHANGELOG.md
 
 # Commit и push
 git add docs/versions.md
-git commit -m "docs: update versions.md for v1.2.6 dev release"
+git commit -m "docs: update versions.md for v1.26 dev release"
 git push origin dev
 
 # Создать tag
-git tag -a v1.2.6-dev -m "Dev release v1.2.6"
-git push origin v1.2.6-dev
+git tag -a v1.26-dev -m "Dev release v1.26"
+git push origin v1.26-dev
 ```
 
 **Stage Release:**
@@ -208,14 +185,14 @@ git checkout -b stage
 git push origin stage
 
 # Обновить versions.md для stage
-echo "v1.2.6-stage.1 (stage) (2025-11-21 10:00): stage testing" >> docs/versions.md
+echo "v1.26-stage (stage) (2025-11-21 10:00): stage testing" >> .docs/CHANGELOG.md
 
 # Commit и tag
 git add docs/versions.md
-git commit -m "docs: prepare v1.2.6 for stage testing"
-git tag -a v1.2.6-stage.1 -m "Stage release v1.2.6-stage.1"
+git commit -m "docs: prepare v1.26 for stage testing"
+git tag -a v1.26-stage -m "Stage release v1.26-stage"
 git push origin stage
-git push origin v1.2.6-stage.1
+git push origin v1.26-stage
 ```
 
 **Prod Release:**
@@ -227,14 +204,14 @@ git checkout -b prod
 git push origin prod
 
 # Финальное обновление versions.md
-echo "v1.2.6 (prod) (2025-11-22 14:00): production release" >> docs/versions.md
+echo "v1.26 (prod) (2025-11-22 14:00): production release" >> .docs/CHANGELOG.md
 
 # Commit и tag
 git add docs/versions.md
-git commit -m "docs: production release v1.2.6"
-git tag -a v1.2.6 -m "Production release v1.2.6"
+git commit -m "docs: production release v1.26"
+git tag -a v1.26 -m "Production release v1.26"
 git push origin prod
-git push origin v1.2.6
+git push origin v1.26
 ```
 
 ---
@@ -243,8 +220,8 @@ git push origin v1.2.6
 
 **Для production релизов:**
 - Перейти в GitHub → Releases → New Release
-- Select tag: v1.2.6
-- Title: "Venus v1.2.6 - Production Release"
+- Select tag: v1.26
+- Title: "Venus v1.26 - Production Release"
 - Publish release
 
 **Post-release monitoring:**
@@ -259,22 +236,10 @@ git push origin v1.2.6
 ### Какие файлы синхронизировать
 
 **При каждом tag push:**
-- [`docs/versions.md`](versions.md) — обязательно с указанием ветки
+- [`.docs/CHANGELOG.md`](CHANGELOG.md) — обязательно с указанием ветки
 
 **При значительных изменениях:**
-- [`docs/api_usage.md`](api_usage.md) — если API изменилось
-- [`docs/directory_tree.md`](directory_tree.md) — если структура изменилась
-- [`docs/project_passport.md`](project_passport.md) — при milestones
-
-**При достижении контрольных точек:**
-- [`docs/project_passport.md`](project_passport.md) — статус проекта
-- [`docs/traceability-matrix.md`](traceability-matrix.md) — прогресс требований
-- [`docs/stages.md`](stages.md) — если изменился план
-
-**CHANGELOG.md ведется отдельно:**
-- Обновляется в процессе работы
-- Содержит детальную историю изменений
-- Не требует синхронизации с git tags
+Те файлы, которые описывают механики, подвергшиеся изменениям.
 
 ---
 
@@ -340,13 +305,13 @@ Git operations триггерят CI/CD pipeline по веткам:
 
 ```bash
 # Откатить working directory к тегу
-git checkout v1.2.5
+git checkout v1.25
 
 # Создать branch от этой версии
-git checkout -b hotfix/rollback-v1.2.5
+git checkout -b hotfix/rollback-v1.25
 
 # Или hard reset (ОСТОРОЖНО!)
-git reset --hard v1.2.5
+git reset --hard v1.25
 ```
 
 ### Откат к конкретному commit

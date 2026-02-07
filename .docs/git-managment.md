@@ -30,7 +30,8 @@
 | **stage** | Предпродакшн тестирование | PR review | +Интеграционные тесты, stage deploy |
 | **prod** | Продакшн | Multiple approvals | +Security scans, production deploy |
 
-**Особенности:** Тэги доступны во всех ветках, но деплой происходит только из соответствующих веток.
+**Особенности:** Теги доступны во всех ветках, но деплой происходит только из соответствующих веток.
+**Важно:** Для релизов используем только аннотированные теги (`git tag -a`), lightweight-теги не используем.
 
 ### .gitignore стратегия
 
@@ -44,13 +45,12 @@
 
 ## Версионирование
 
-### Semantic Versioning
+### Формат версий
 
-Используем [SemVer 2.0.0](https://semver.org/):
-- **MAJOR:** Breaking changes
-- **MINOR:** Новая функциональность (backward-compatible)
-
-**Формат:** `vMAJOR.MINOR.PATCH` (пример: `v1.23`)
+Используем короткий формат версий:
+- `v1.23`
+- `v1.25 → v1.26`
+- `v0.02`
 
 ### Определение версии
 
@@ -69,8 +69,8 @@ git describe --tags --abbrev=0
 **Dev ветка:**
 1. Реализовать фичи в dev
 2. Push в dev (CI/CD тестирование)
-3. Создать tag при достижении milestones
-4. Обновить `.docs/CHANGELOG.md`
+3. Создать аннотированный tag при достижении milestones
+4. Обновить `.docs/CHANGELOGE.md`
 
 **Stage ветка:**
 1. Merge стабильной версии из dev в stage
@@ -84,10 +84,10 @@ git describe --tags --abbrev=0
 3. Создать production tag (v1.2.3)
 4. Manual deploy на production
 
-### Формат обновления CHANGELOG.md
+### Формат обновления CHANGELOGE.md
 
 ```
-v{MAJOR}.{MINOR}. ({branch}) ({YYYY-MM-DD} {HH:MM}): {краткое описание}
+v1.23 (dev) (2026-02-07 19:25): краткое описание
 ```
 
 **Правила:**
@@ -137,20 +137,20 @@ docs(api): update API usage examples
 - [ ] Feature полностью реализована и протестирована
 - [ ] Локальные тесты проходят
 - [ ] Код соответствует code style
-- [ ] [`.docs/CHANGELOG.md`](CHANGELOG.md) updated с `(dev)`
+- [ ] [`.docs/CHANGELOGE.md`](CHANGELOGE.md) updated с `(dev)`
 
 **Для stage релиза:**
 - [ ] Стабильная версия из dev
 - [ ] Интеграционные тесты пройдены
 - [ ] QA approval получен
-- [ ] [`.docs/CHANGELOG.md`](CHANGELOG.md) updated с `(stage)`
+- [ ] [`.docs/CHANGELOGE.md`](CHANGELOGE.md) updated с `(stage)`
 - [ ] Stage environment готов
 
 **Для prod релиза:**
 - [ ] Stage testing завершено успешно
 - [ ] Все acceptance criteria выполнены
 - [ ] Performance и security checks пройдены
-- [ ] [`.docs/CHANGELOG.md`](CHANGELOG.md) updated с `(prod)`
+- [ ] [`.docs/CHANGELOGE.md`](CHANGELOGE.md) updated с `(prod)`
 - [ ] Rollback plan подготовлен
 
 ---
@@ -163,12 +163,12 @@ docs(api): update API usage examples
 git checkout dev
 git pull origin dev
 
-# Обновить versions.md
-echo "v1.26 (dev) (2025-11-20 15:30): feature description" >> .docs/CHANGELOG.md
+# Обновить CHANGELOGE.md
+echo "v1.26 (dev) (2025-11-20 15:30): feature description" >> .docs/CHANGELOGE.md
 
 # Commit и push
-git add docs/versions.md
-git commit -m "docs: update versions.md for v1.26 dev release"
+git add .docs/CHANGELOGE.md
+git commit -m "docs: update CHANGELOGE.md for v1.26 dev release"
 git push origin dev
 
 # Создать tag
@@ -184,11 +184,11 @@ git pull origin dev
 git checkout -b stage
 git push origin stage
 
-# Обновить versions.md для stage
-echo "v1.26-stage (stage) (2025-11-21 10:00): stage testing" >> .docs/CHANGELOG.md
+# Обновить CHANGELOGE.md для stage
+echo "v1.26-stage (stage) (2025-11-21 10:00): stage testing" >> .docs/CHANGELOGE.md
 
 # Commit и tag
-git add docs/versions.md
+git add .docs/CHANGELOGE.md
 git commit -m "docs: prepare v1.26 for stage testing"
 git tag -a v1.26-stage -m "Stage release v1.26-stage"
 git push origin stage
@@ -203,11 +203,11 @@ git pull origin stage
 git checkout -b prod
 git push origin prod
 
-# Финальное обновление versions.md
-echo "v1.26 (prod) (2025-11-22 14:00): production release" >> .docs/CHANGELOG.md
+# Финальное обновление CHANGELOGE.md
+echo "v1.26 (prod) (2025-11-22 14:00): production release" >> .docs/CHANGELOGE.md
 
 # Commit и tag
-git add docs/versions.md
+git add .docs/CHANGELOGE.md
 git commit -m "docs: production release v1.26"
 git tag -a v1.26 -m "Production release v1.26"
 git push origin prod
@@ -236,7 +236,7 @@ git push origin v1.26
 ### Какие файлы синхронизировать
 
 **При каждом tag push:**
-- [`.docs/CHANGELOG.md`](CHANGELOG.md) — обязательно с указанием ветки
+- [`.docs/CHANGELOGE.md`](CHANGELOGE.md) — обязательно с указанием ветки
 
 **При значительных изменениях:**
 Те файлы, которые описывают механики, подвергшиеся изменениям.
@@ -249,10 +249,10 @@ git push origin v1.26
 
 ## Troubleshooting
 
-**Забыли обновить versions.md:**
+**Забыли обновить CHANGELOGE.md:**
 ```bash
-echo "v1.2.6 (dev) (2025-11-20 15:30): description" >> docs/versions.md
-git add docs/versions.md && git commit --amend --no-edit
+echo "v1.2.6 (dev) (2025-11-20 15:30): description" >> .docs/CHANGELOGE.md
+git add .docs/CHANGELOGE.md && git commit --amend --no-edit
 ```
 
 **Неправильная версия tag:**
@@ -283,7 +283,7 @@ Git operations триггерят CI/CD pipeline по веткам:
 
 **Dev ветка:**
 - Push: автоматический CI (lint, test, build)
-- Tag: создание dev release, обновление versions.md
+- Tag: создание dev release, обновление CHANGELOGE.md
 
 **Stage ветка:**
 - Push: CI + интеграционные тесты
@@ -294,10 +294,6 @@ Git operations триггерят CI/CD pipeline по веткам:
 - Push: финальный CI + security scans
 - Tag: production deployment (manual approval)
 - Releases: создание GitHub releases
-
-**Детали:** См. [`docs/ci-cd-pipeline.md`](ci-cd-pipeline.md)
-
----
 
 ## Восстановление и откаты
 

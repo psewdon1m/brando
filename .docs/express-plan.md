@@ -43,6 +43,7 @@ MVP должен включать:
      - `catalog-service`: получение секций и ленты каталога.
      - `media-service`: получение списка видео/постеров для hero и visual research.
    - Добавить базовую валидацию и единый формат ошибок.
+   - Артефакт шага: `.docs/mvp-backend-api.md`.
 
 6. API Gateway / BFF
    - Настроить единый вход для frontend.
@@ -75,6 +76,7 @@ MVP должен включать:
 - Спецификация архитектуры репозитория: `.docs/mvp-repo-architecture.md`
 - Спецификация Docker-базиса: `.docs/mvp-docker-baseline.md`
 - Спецификация инфраструктурных зависимостей: `.docs/mvp-infra-dependencies.md`
+- Спецификация Backend MVP API: `.docs/mvp-backend-api.md`
 - Локальная среда разработки: Windows 11, VSCode, Git
 - Медиа-материалы для видео-слайд-шоу и визуального исследования (временные заглушки или согласованный контент)
 - Язык разработки: `TypeScript` (strict mode)

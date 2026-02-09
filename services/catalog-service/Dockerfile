@@ -8,4 +8,4 @@ ENV SERVICE_NAME=catalog-service
 
 COPY . .
 
-CMD ["node", "-e", "const http=require('http');const port=Number(process.env.PORT||8081);const name=process.env.SERVICE_NAME||'catalog-service';http.createServer((req,res)=>{res.setHeader('content-type','application/json');res.end(JSON.stringify({service:name,status:'ok'}));}).listen(port,'0.0.0.0');"]
+CMD ["node", "src/server.js"]

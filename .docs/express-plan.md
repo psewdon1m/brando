@@ -48,6 +48,7 @@ MVP должен включать:
 6. API Gateway / BFF
    - Настроить единый вход для frontend.
    - Проксировать и агрегировать данные из сервисов для UI.
+   - Артефакт шага: `.docs/mvp-api-gateway.md`.
 
 7. Frontend MVP в `Next.js`
    - Реализовать страницы `/`, `/catalog`, `/visual-research`.
@@ -77,6 +78,7 @@ MVP должен включать:
 - Спецификация Docker-базиса: `.docs/mvp-docker-baseline.md`
 - Спецификация инфраструктурных зависимостей: `.docs/mvp-infra-dependencies.md`
 - Спецификация Backend MVP API: `.docs/mvp-backend-api.md`
+- Спецификация API Gateway / BFF: `.docs/mvp-api-gateway.md`
 - Локальная среда разработки: Windows 11, VSCode, Git
 - Медиа-материалы для видео-слайд-шоу и визуального исследования (временные заглушки или согласованный контент)
 - Язык разработки: `TypeScript` (strict mode)

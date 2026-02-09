@@ -4,6 +4,10 @@
 
 ---
 
+v0.09 (mvp) (2026-02-09 17:35): implement api-gateway bff with aggregated home catalog and visual-research endpoints
+
+---
+
 v0.08 (mvp) (2026-02-09 17:32): implement catalog and media service MVP APIs with validation and unified error format
 
 ---

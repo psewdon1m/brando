@@ -4,6 +4,10 @@
 
 ---
 
+v0.04 (mvp) (2026-02-09 17:12): mvp docs update, microservices roadmap and service API boundaries
+
+---
+
 v0.03 (mvp) (2026-02-07 19:47): docs sync, mvp plan and git rules update
 
 ---

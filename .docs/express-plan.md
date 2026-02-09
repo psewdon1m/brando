@@ -31,6 +31,7 @@ MVP должен включать:
    - Подготовить `Dockerfile` для каждого сервиса.
    - Собрать `docker-compose.yml` для локальной среды (сети, порты, env, volumes).
    - Добавить `docker-compose.override.yml` для dev-режима.
+   - Артефакт шага: `.docs/mvp-docker-baseline.md`.
 
 4. Инфраструктурные зависимости
    - Подключить БД и кэш через Docker Compose (если требуются в рамках MVP).
@@ -71,6 +72,7 @@ MVP должен включать:
 - Правила проекта: `.docs/rules.md`
 - Спецификация границ сервисов и API-контрактов: `.docs/mvp-service-boundaries.md`
 - Спецификация архитектуры репозитория: `.docs/mvp-repo-architecture.md`
+- Спецификация Docker-базиса: `.docs/mvp-docker-baseline.md`
 - Локальная среда разработки: Windows 11, VSCode, Git
 - Медиа-материалы для видео-слайд-шоу и визуального исследования (временные заглушки или согласованный контент)
 - Язык разработки: `TypeScript` (strict mode)

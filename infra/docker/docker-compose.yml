@@ -1,0 +1,59 @@
+name: brando-mvp
+
+services:
+  web:
+    build:
+      context: ../../apps/web
+      dockerfile: Dockerfile
+    container_name: brando-web
+    environment:
+      PORT: "3000"
+      SERVICE_NAME: web
+    ports:
+      - "3000:3000"
+    networks:
+      - brando-net
+
+  api-gateway:
+    build:
+      context: ../../services/api-gateway
+      dockerfile: Dockerfile
+    container_name: brando-api-gateway
+    environment:
+      PORT: "8080"
+      SERVICE_NAME: api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - brando-net
+
+  catalog-service:
+    build:
+      context: ../../services/catalog-service
+      dockerfile: Dockerfile
+    container_name: brando-catalog-service
+    environment:
+      PORT: "8081"
+      SERVICE_NAME: catalog-service
+    ports:
+      - "8081:8081"
+    networks:
+      - brando-net
+
+  media-service:
+    build:
+      context: ../../services/media-service
+      dockerfile: Dockerfile
+    container_name: brando-media-service
+    environment:
+      PORT: "8082"
+      SERVICE_NAME: media-service
+    ports:
+      - "8082:8082"
+    networks:
+      - brando-net
+
+networks:
+  brando-net:
+    driver: bridge
+

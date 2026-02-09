@@ -1,0 +1,29 @@
+services:
+  web:
+    volumes:
+      - ../../apps/web:/app
+    environment:
+      NODE_ENV: development
+      LOG_LEVEL: debug
+
+  api-gateway:
+    volumes:
+      - ../../services/api-gateway:/app
+    environment:
+      NODE_ENV: development
+      LOG_LEVEL: debug
+
+  catalog-service:
+    volumes:
+      - ../../services/catalog-service:/app
+    environment:
+      NODE_ENV: development
+      LOG_LEVEL: debug
+
+  media-service:
+    volumes:
+      - ../../services/media-service:/app
+    environment:
+      NODE_ENV: development
+      LOG_LEVEL: debug
+

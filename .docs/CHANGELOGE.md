@@ -4,6 +4,10 @@
 
 ---
 
+v0.06 (mvp) (2026-02-09 17:21): add docker baseline for web and microservices with compose setup
+
+---
+
 v0.05 (mvp) (2026-02-09 17:18): move project structure to repository root and remove example-project artifact
 
 ---

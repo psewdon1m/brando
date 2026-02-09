@@ -4,6 +4,10 @@
 
 ---
 
+v0.07 (mvp) (2026-02-09 17:27): add postgres and redis dependencies with schema and seed initialization
+
+---
+
 v0.06 (mvp) (2026-02-09 17:21): add docker baseline for web and microservices with compose setup
 
 ---

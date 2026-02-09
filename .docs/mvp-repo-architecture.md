@@ -15,8 +15,8 @@ services/
   api-gateway/          # BFF/gateway for frontend
   catalog-service/      # Catalog domain API
   media-service/        # Media domain API
-packages/
-  shared-types/         # Shared TypeScript contracts (DTO, enums, errors)
+  packages/
+    shared-types/         # Shared contracts (DTO, enums, errors)
   ui/                   # Reusable UI components/design primitives
   config/               # Shared configs (eslint, tsconfig, env schema)
 infra/
@@ -46,7 +46,7 @@ infra/
 - Выдача метаданных и ссылок на медиа-ресурсы.
 
 ### `packages/shared-types`
-- Типы API запросов/ответов.
+- Общие контракты API запросов/ответов.
 - Общие типы ошибок и коды ошибок.
 
 ### `packages/ui`
@@ -54,7 +54,7 @@ infra/
 - Токены стилей и адаптеры визуальной системы.
 
 ### `packages/config`
-- Переиспользуемые конфиги линтинга, TypeScript, переменных окружения.
+- Переиспользуемые конфиги линтинга и переменных окружения.
 
 ### `infra/docker`
 - Общие Docker-шаблоны.

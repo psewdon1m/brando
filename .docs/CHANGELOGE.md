@@ -4,6 +4,10 @@
 
 ---
 
+v0.13 (mvp) (2026-02-09 18:41): finalize mvp docs with actual stack alignment and root readme
+
+---
+
 v0.12 (mvp) (2026-02-09 18:25): add local container qa artifacts with smoke-check script and validation report
 
 ---

@@ -4,6 +4,10 @@
 
 ---
 
+v0.12 (mvp) (2026-02-09 18:25): add local container qa artifacts with smoke-check script and validation report
+
+---
+
 v0.11 (mvp) (2026-02-09 17:56): add next-intl ru/en localization routes with frontend motion polish
 
 ---

@@ -1,0 +1,29 @@
+{
+  "Nav": {
+    "home": "Home",
+    "catalog": "Catalog",
+    "visualResearch": "Visual Research",
+    "localeSwitch": "RU"
+  },
+  "Home": {
+    "title": "Metamorphosis and Silence",
+    "subtitle": "MVP hero screen: video slideshow and visual rhythm without text overload.",
+    "catalogTitle": "Catalog",
+    "catalogSubtitle": "Catalog feed preview from api-gateway.",
+    "mediaUnavailable": "Video is temporarily unavailable",
+    "catalogUnavailable": "Catalog is temporarily unavailable",
+    "hint": "Check api-gateway and media-service status."
+  },
+  "Catalog": {
+    "title": "Catalog",
+    "subtitle": "Feed with accents and varied visual card weight.",
+    "unavailable": "Catalog is temporarily unavailable",
+    "videoAccent": "Video accent",
+    "imageType": "Image"
+  },
+  "VisualResearch": {
+    "title": "Visual Research",
+    "subtitle": "A living visual journal format: video-led, short captions, no archive-style layout.",
+    "unavailable": "Materials are temporarily unavailable"
+  }
+}

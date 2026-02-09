@@ -4,6 +4,10 @@
 
 ---
 
+v0.11 (mvp) (2026-02-09 17:56): add next-intl ru/en localization routes with frontend motion polish
+
+---
+
 v0.10 (mvp) (2026-02-09 17:44): implement nextjs frontend pages integrated with api-gateway and docker dev runtime
 
 ---

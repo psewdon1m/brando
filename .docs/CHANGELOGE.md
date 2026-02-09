@@ -4,6 +4,10 @@
 
 ---
 
+v0.05 (mvp) (2026-02-09 17:18): move project structure to repository root and remove example-project artifact
+
+---
+
 v0.04 (mvp) (2026-02-09 17:12): mvp docs update, microservices roadmap and service API boundaries
 
 ---

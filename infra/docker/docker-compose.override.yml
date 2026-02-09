@@ -2,6 +2,7 @@ services:
   web:
     volumes:
       - ../../apps/web:/app
+      - web-node-modules:/app/node_modules
     environment:
       NODE_ENV: development
       LOG_LEVEL: debug
@@ -27,3 +28,5 @@ services:
       NODE_ENV: development
       LOG_LEVEL: debug
 
+volumes:
+  web-node-modules:

@@ -4,6 +4,10 @@
 
 ---
 
+v0.10 (mvp) (2026-02-09 17:44): implement nextjs frontend pages integrated with api-gateway and docker dev runtime
+
+---
+
 v0.09 (mvp) (2026-02-09 17:35): implement api-gateway bff with aggregated home catalog and visual-research endpoints
 
 ---

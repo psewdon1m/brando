@@ -54,6 +54,7 @@ MVP должен включать:
    - Реализовать страницы `/`, `/catalog`, `/visual-research`.
    - Реализовать hero-видео-слайд-шоу, ленту каталога и страницу визуального исследования.
    - Подключить frontend к `api-gateway` вместо прямой статики там, где сервисы уже готовы.
+   - Артефакт шага: `.docs/mvp-frontend-nextjs.md`.
 
 8. Интернационализация и UI-полировка
    - Подключить `next-intl` для `ru/en`.
@@ -79,6 +80,7 @@ MVP должен включать:
 - Спецификация инфраструктурных зависимостей: `.docs/mvp-infra-dependencies.md`
 - Спецификация Backend MVP API: `.docs/mvp-backend-api.md`
 - Спецификация API Gateway / BFF: `.docs/mvp-api-gateway.md`
+- Спецификация Frontend MVP (`Next.js`): `.docs/mvp-frontend-nextjs.md`
 - Локальная среда разработки: Windows 11, VSCode, Git
 - Медиа-материалы для видео-слайд-шоу и визуального исследования (временные заглушки или согласованный контент)
 - Язык разработки: `TypeScript` (strict mode)
